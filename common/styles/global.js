@@ -1,50 +1,10 @@
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 
 /* prettier-ignore */
 export const injectGlobalStyles = () => css`
   @font-face {
-    font-family: 'mono';
-    src: url('/static/SFMono-Medium.woff');
-  }
-
-  @font-face {
-    font-family: 'mono-bold';
-    src: url('/static/SFMono-Bold.woff');
-  }
-
-  @font-face {
-    font-family: 'inter-regular';
-    src: url('/static/Inter-Regular.woff');
-  }
-
-  @font-face {
-    font-family: 'inter-semi-bold';
-    src: url('/static/Inter-SemiBold.woff');
-  }
-
-  @font-face {
-    font-family: 'inter-medium';
-    src: url('/static/Inter-Medium.woff');
-  }
-
-  @font-face {
-    font-family: 'fira-code-regular';
-    src: url('/static/FiraCode-Regular.woff');
-  }
-
-  @font-face {
-    font-family: 'fira-code-bold';
-    src: url('/static/FiraCode-Bold.woff');
-  }
-
-  @font-face {
-    font-family: 'jet-brains-regular';
-    src: url('/static/JetBrainsMono-Regular.woff');
-  }
-
-  @font-face {
-    font-family: 'jet-brains-bold';
-    src: url('/static/JetBrainsMono-Bold.woff');
+    font-family: "Mono";
+    src: url("/static/JetBrainsMono-Regular.woff") format("woff");
   }
 
   html, body, div, span, applet, object, iframe,
@@ -73,24 +33,21 @@ export const injectGlobalStyles = () => css`
   }
 
   html, body {
-    background: #111;
-    color: white;
-    font-size: 16px;
-    font-family: 'mono', helvetica neue, helvetica, sans-serif;
+    --color-primary: #0047ff;
+
+    background: #fff;
+    color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, helvetica neue, helvetica, sans-serif;
+    font-size: 14px;
     scrollbar-width: none;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-
-    @media (max-width: 832px) {
-      font-size: 10px;
-    }
 
     ::-webkit-scrollbar {
       display: none;
     }
     
-    -webkit-font-feature-settings: "liga"1, "ss01"1, "zero"1, "cv11"1, 'frac'1, 'calt'1, 'tnum'1;
-    -moz-font-feature-settings: "liga"1, "ss01"1, "zero"1, "cv11"1, 'frac'1, 'calt'1, 'tnum'1;
-    -ms-font-feature-settings: "liga"1, "ss01"1, "zero"1, "cv11"1, 'frac'1, 'calt'1, 'tnum'1;
-    font-feature-settings: "liga"1, "ss01"1, "zero"1, "cv11"1, 'frac'1, 'calt'1, 'tnum'1;
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
 `;

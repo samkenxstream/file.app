@@ -1,19 +1,50 @@
 import { FilecoinNumber, Converter } from "@glif/filecoin-number";
 
-/*
-totals.averages = {
-  costPerDealFIL: Filecoin.formatAsFilecoinConversion(totals.cost / totals.deals),
-  costPerDealAttoFIL: totals.cost / totals.deals,
-  sizePerDealBytes: totals.size / totals.deals,
-  sizePerDealBytesFormatted: Strings.bytesToSize(totals.size / totals.deals),
-  costPerByteAttoFIL: totals.cost / totals.size,
-  costPerByteFIL: Filecoin.formatAsFilecoinConversion(totals.cost / totals.size),
-  costPerGBFIL: Filecoin.formatAsFilecoinConversion((totals.cost / totals.size) * 1073741824),
-};
-*/
-
 export function formatAsFilecoin(number) {
   return `${number} FIL`;
+}
+
+export function attoFILtoFIL(number = 0) {
+  const filecoinNumber = new FilecoinNumber(`${number}`, "attofil");
+  const inFil = filecoinNumber.toFil();
+  return inFil;
+}
+
+export function getAttoFILtoUSD(number = 0, price) {
+  const conversion = attoFILtoFIL(number);
+  const usd = Number(conversion) * Number(price);
+  return usd;
+}
+
+export function percentageCheaper(attoFIL, priceAmazon, currentUSD) {
+  const filecoin = getAttoFILtoUSD(attoFIL, currentUSD);
+  if (filecoin <= 0) {
+    return "0.00% the cost of Amazon";
+  }
+
+  return `${((filecoin / priceAmazon) * 100).toFixed(
+    2
+  )}% the cost of Amazon S3`;
+}
+
+export function compareFilecoinToAmazon(
+  priceFilecoin,
+  priceAmazon,
+  currentUSD
+) {
+  const filecoin = getAttoFILtoUSD(priceFilecoin, currentUSD);
+
+  if (filecoin <= 0) {
+    return "Infinity times cheaper";
+  }
+
+  let percentage = 0;
+  if (filecoin < priceAmazon) {
+    const calculation = ((priceAmazon - filecoin) / filecoin) * 100;
+    return `${calculation}% cheaper`;
+  } else {
+    return "It is not cheaper.";
+  }
 }
 
 export function inFIL(number = 0, price) {
@@ -24,8 +55,8 @@ export function inFIL(number = 0, price) {
 
   if (!isEmpty(price)) {
     let usd = Number(inFil) * Number(price);
-    if (usd >= 0.01) {
-      usd = `$${usd.toFixed(2)} USD`;
+    if (usd >= 0.0000001) {
+      usd = `$${usd.toFixed(7)} USD`;
     } else {
       usd = `$0.00 USD`;
     }
@@ -89,7 +120,17 @@ export const bytesToSize = (bytes, decimals = 2) => {
 
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ["Bytes", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"];
+  const sizes = [
+    "Bytes",
+    "KiB",
+    "MiB",
+    "GiB",
+    "TiB",
+    "PiB",
+    "EiB",
+    "ZiB",
+    "YiB",
+  ];
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 

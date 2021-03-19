@@ -1,12 +1,14 @@
 .next
 .env
 .env-production
+.env.local
 .DS_STORE
 DS_STORE
 package-lock.json
 yarn.lock
 node_modules
 dist
+data.cache
 
 /**/*/package-lock.json
 /**/*/.DS_STORE
