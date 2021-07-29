@@ -8,7 +8,6 @@ package-lock.json
 yarn.lock
 node_modules
 dist
-data.cache
 
 /**/*/package-lock.json
 /**/*/.DS_STORE

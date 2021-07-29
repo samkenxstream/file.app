@@ -8,7 +8,7 @@
     "node": "16.x.x"
   },
   "scripts": {
-    "dev": "rm data.cache && NODE_TLS_REJECT_UNAUTHORIZED=0 node . --unhandled-rejections=strict",
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 node . --unhandled-rejections=strict",
     "start": "NODE_ENV=production node . --unhandled-rejections=strict",
     "build": "NODE_ENV=production next build"
   },

@@ -12,6 +12,26 @@ const AMAZON_MONTHLY = 0.0125;
 const AMAZON_MONTHLY_IN_BYTES = AMAZON_MONTHLY / ONE_GB;
 const AMAZON_MONTHLY_IN_GIB = AMAZON_MONTHLY_IN_BYTES * 1073741824;
 
+const STYLES_GITHUB = css`
+  background: #071908;
+  color: #ffffff;
+  padding: 8px 24px 8px 24px;
+  font-size: 10px;
+  font-family: 'Mono';
+  text-transform: uppercase;
+  display: block;
+  text-decoration: none;
+  transition: 200ms ease color;
+
+  &:visited {
+    color: #ffffff;
+  }
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+`;
+
 const STYLES_BODY = css`
   font-weight: 400;
   overflow-wrap: break-word;
@@ -391,6 +411,9 @@ export default class IndexPage extends React.Component {
 
     return (
       <Page>
+        <a css={STYLES_GITHUB} href="https://github.com/application-research/file.app" target="_blank">
+          View source on GitHub
+        </a>
         <div css={STYLES_BODY}>
           <div css={STYLES_BODY_LEFT}>
             <div css={STYLES_BOX}>
@@ -583,11 +606,11 @@ export default class IndexPage extends React.Component {
                 <table css={STYLES_TABLE} style={{ marginTop: 24 }}>
                   <tbody>
                     <tr>
-                      <th>1 GiB per Day</th>
+                      <th>per GiB per Day</th>
                       <th>
-                        1 GiB per Month <aside>30 days</aside>
+                        per GiB per Month <aside>30 days</aside>
                       </th>
-                      <th>1 GiB per Year</th>
+                      <th>per GiB per Year</th>
                       <th>Average deal cost</th>
                     </tr>
                     <tr>
@@ -615,9 +638,9 @@ export default class IndexPage extends React.Component {
                 <table css={STYLES_TABLE} style={{ marginTop: 24 }}>
                   <tbody>
                     <tr>
-                      <th>1 GiB per day</th>
-                      <th>1 GiB per month (30 days)</th>
-                      <th>1 GiB per year</th>
+                      <th>per GiB per day</th>
+                      <th>per GiB per month (30 days)</th>
+                      <th>per GiB per year</th>
                     </tr>
                     <tr>
                       <td>{Strings.percentageCheaper(storage.day, AMAZON_MONTHLY_IN_GIB / 30, this.props.price)}</td>
