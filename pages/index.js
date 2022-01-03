@@ -497,7 +497,7 @@ export default class IndexPage extends React.Component {
               </tbody>
             </table>
 
-            {this.props.athena ? (
+            {this.props.athena && this.props.athenaResponse ? (
               <React.Fragment>
                 <H2 href="https://www.atpool.com/en-US/" target="_blank">
                   atpool.com/en-US/
@@ -552,13 +552,13 @@ export default class IndexPage extends React.Component {
                   <th>textile.io</th>
                   <th>filrep.io</th>
                   <th>estuary.tech</th>
-                  <th>atpool</th>
+                  {this.props.athena && this.props.athenaResponse ? <th>atpool</th> : null}
                 </tr>
                 <tr>
                   <td>{this.props.count.textile}</td>
                   <td>{this.props.count.filrep}</td>
                   <td>{this.props.count.estuary}</td>
-                  <td>{this.props.count.athena}</td>
+                  {this.props.athena && this.props.athenaResponse ? <td>{this.props.count.athena}</td> : null}
                 </tr>
               </tbody>
             </table>

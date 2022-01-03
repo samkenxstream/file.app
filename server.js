@@ -146,7 +146,8 @@ app.prepare().then(async () => {
     const { payload, epoch } = await getSlingshotDataAsJSON();
     const { price, symbol } = await getFilecoinPriceDataAsJSON();
     const { miners } = await getMinerIndexDataAsJSON();
-    const athenaResponse = await getAthenaDataAsJSON();
+    //const athenaResponse = await getAthenaDataAsJSON();
+    const athenaResponse = null;
     const estuaryMiners = await getEstuaryMinersAsJSON();
     const estuaryStats = await getEstuaryStatsAsJSON();
     const response = await getFilRepMinerIndexDataAsJSON();
@@ -169,12 +170,15 @@ app.prepare().then(async () => {
         filrep: response.miners.length,
         estuary: estuaryMiners.length,
       },
+      athena: null,
+      /*
       athena: {
         deals: athenaResponse && athenaResponse.data ? athenaResponse.data.storage_deals : 0,
         verifiedDeals: athenaResponse && athenaResponse.data ? athenaResponse.data.verified_storageDeals : 0,
         data: athenaResponse && athenaResponse.data ? athenaResponse.data.data_stored : 0,
         verifiedData: athenaResponse && athenaResponse.data ? athenaResponse.data.verified_dataStored : 0,
       },
+      */
       ...payload,
     };
 
@@ -215,7 +219,8 @@ app.prepare().then(async () => {
     const { payload, epoch } = await getSlingshotDataAsJSON();
     const { price, symbol } = await getFilecoinPriceDataAsJSON();
     const { miners } = await getMinerIndexDataAsJSON();
-    const athenaResponse = await getAthenaDataAsJSON();
+    // const athenaResponse = await getAthenaDataAsJSON();
+    const athenaResponse = null;
     const estuaryMiners = await getEstuaryMinersAsJSON();
     const estuaryStats = await getEstuaryStatsAsJSON();
     const response = await getFilRepMinerIndexDataAsJSON();
@@ -238,12 +243,15 @@ app.prepare().then(async () => {
         filrep: response.miners.length,
         estuary: estuaryMiners.length,
       },
+      athena: null,
+      /*
       athena: {
         deals: athenaResponse && athenaResponse.data ? athenaResponse.data.storage_deals : 0,
         verifiedDeals: athenaResponse && athenaResponse.data ? athenaResponse.data.verified_storageDeals : 0,
         data: athenaResponse && athenaResponse.data ? athenaResponse.data.data_stored : 0,
         verifiedData: athenaResponse && athenaResponse.data ? athenaResponse.data.verified_dataStored : 0,
       },
+      */
       ...payload,
     };
 
