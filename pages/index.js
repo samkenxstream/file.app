@@ -433,9 +433,9 @@ export default class IndexPage extends React.Component {
                   <th>Clients</th>
                 </tr>
                 <tr>
-                  <td>{total_unique_cids.toLocaleString()}</td>
-                  <td>{total_unique_providers.toLocaleString()}</td>
-                  <td>{total_unique_clients.toLocaleString()}</td>
+                  <td>{total_unique_cids ? total_unique_cids.toLocaleString() : 0}</td>
+                  <td>{total_unique_providers ? total_unique_providers.toLocaleString() : 0}</td>
+                  <td>{total_unique_clients ? total_unique_clients.toLocaleString() : 0}</td>
                 </tr>
               </tbody>
             </table>
@@ -447,9 +447,10 @@ export default class IndexPage extends React.Component {
                   <th>Data</th>
                 </tr>
                 <tr>
-                  <td>{this.props.total_num_deals.toLocaleString()}</td>
+                  <td>{this.props.total_num_deals ? this.props.total_num_deals.toLocaleString() : 0}</td>
                   <td>
-                    {this.props.total_stored_data_size.toLocaleString()} Bytes ⇄ <aside>{Strings.bytesToSize(this.props.total_stored_data_size, 4)}</aside>
+                    {this.props.total_stored_data_size ? this.props.total_stored_data_size.toLocaleString() : 0} Bytes ⇄{' '}
+                    <aside>{Strings.bytesToSize(this.props.total_stored_data_size, 4)}</aside>
                   </td>
                 </tr>
               </tbody>
@@ -467,9 +468,10 @@ export default class IndexPage extends React.Component {
                   <th>Data</th>
                 </tr>
                 <tr>
-                  <td>{this.props.filplus_total_num_deals.toLocaleString()}</td>
+                  <td>{this.props.filplus_total_num_deals ? this.props.filplus_total_num_deals.toLocaleString() : 0}</td>
                   <td>
-                    {this.props.filplus_total_stored_data_size.toLocaleString()} bytes ⇄ <aside>{Strings.bytesToSize(this.props.filplus_total_stored_data_size, 4)}</aside>
+                    {this.props.filplus_total_stored_data_size ? this.props.filplus_total_stored_data_size.toLocaleString() : 0} bytes ⇄{' '}
+                    <aside>{Strings.bytesToSize(this.props.filplus_total_stored_data_size, 4)}</aside>
                   </td>
                 </tr>
               </tbody>
@@ -480,22 +482,25 @@ export default class IndexPage extends React.Component {
             </H2>
             <P style={{ marginTop: 4 }}>{Strings.toDateSinceEpoch(epoch)}</P>
 
-            <table css={STYLES_TABLE} style={{ marginTop: 24 }}>
-              <tbody>
-                <tr>
-                  <th>Verified deals</th>
-                  <th>Files</th>
-                  <th>Storage</th>
-                </tr>
-                <tr>
-                  <td>{this.props.estuaryStats.dealsOnChain.toLocaleString()}</td>
-                  <td>{this.props.estuaryStats.totalFiles.toLocaleString()}</td>
-                  <td>
-                    {this.props.estuaryStats.totalStorage.toLocaleString()} bytes ⇄ <aside>{Strings.bytesToSize(this.props.estuaryStats.totalStorage, 4)}</aside>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            {this.props.estuaryStats ? (
+              <table css={STYLES_TABLE} style={{ marginTop: 24 }}>
+                <tbody>
+                  <tr>
+                    <th>Verified deals</th>
+                    <th>Files</th>
+                    <th>Storage</th>
+                  </tr>
+                  <tr>
+                    <td>{this.props.estuaryStats.dealsOnChain ? this.props.estuaryStats.dealsOnChain.toLocaleString() : 0}</td>
+                    <td>{this.props.estuaryStats.totalFiles ? this.props.estuaryStats.totalFiles.toLocaleString() : 0}</td>
+                    <td>
+                      {this.props.estuaryStats.totalStorage ? this.props.estuaryStats.totalStorage.toLocaleString() : 0} bytes ⇄{' '}
+                      <aside>{Strings.bytesToSize(this.props.estuaryStats.totalStorage, 4)}</aside>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            ) : null}
 
             {this.props.athena && this.props.athenaResponse ? (
               <React.Fragment>
@@ -513,8 +518,8 @@ export default class IndexPage extends React.Component {
                       <th>Verified</th>
                     </tr>
                     <tr>
-                      <td>{this.props.athena.deals.toLocaleString()}</td>
-                      <td>{this.props.athena.verifiedDeals.toLocaleString()}</td>
+                      <td>{this.props.athena.deals ? this.props.athena.deals.toLocaleString() : 0}</td>
+                      <td>{this.props.athena.verifiedDeals ? this.props.athena.verifiedDeals.toLocaleString() : 0}</td>
                       <td>
                         <aside>{Strings.bytesToSize(this.props.athena.data, 4)}</aside>
                       </td>
@@ -665,10 +670,10 @@ export default class IndexPage extends React.Component {
                     <th>Total available size</th>
                   </tr>
                   <tr>
-                    <td>{this.state.miners.length.toLocaleString()}</td>
-                    <td>{dealCount.toLocaleString()}</td>
-                    <td>{Strings.bytesToSize(dataStored, 2)}</td>
-                    <td>{Strings.bytesToSize(dataAvailable, 2)}</td>
+                    <td>{this.state.miners ? this.state.miners.length.toLocaleString() : 0}</td>
+                    <td>{dealCount ? dealCount.toLocaleString() : 0}</td>
+                    <td>{dataStored ? Strings.bytesToSize(dataStored, 2) : 0}</td>
+                    <td>{dataAvailable ? Strings.bytesToSize(dataAvailable, 2) : 0}</td>
                   </tr>
                 </tbody>
               </table>
