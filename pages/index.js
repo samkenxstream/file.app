@@ -323,7 +323,7 @@ export default class IndexPage extends React.Component {
                 </div>
                 {each.estuary ? (
                   <div css={STYLES_STAT}>
-                    <a css={STYLES_STAT_LEFT} href={`https://estuary.tech/miners/stats/${each.address}`} target="_blank" style={{ fontWeight: 700 }}>
+                    <a css={STYLES_STAT_LEFT} href={`https://estuary.tech/providers/stats/${each.address}`} target="_blank" style={{ fontWeight: 700 }}>
                       View on Estuary
                     </a>
                   </div>
