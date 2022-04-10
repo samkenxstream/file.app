@@ -418,7 +418,7 @@ export default class IndexPage extends React.Component {
           <div css={STYLES_BODY_LEFT}>
             <div css={STYLES_BOX}>
               <H1>file.app</H1>
-              <P style={{ marginTop: 4 }}>Filecoin miner analytics</P>
+              <P style={{ marginTop: 4 }}>Filecoin storage provider analytics</P>
             </div>
             <H2 href="https://storage.filecoin.io" target="_blank">
               storage.filecoin.io
