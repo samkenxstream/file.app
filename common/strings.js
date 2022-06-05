@@ -1,11 +1,11 @@
-import { FilecoinNumber, Converter } from "@glif/filecoin-number";
+import { FilecoinNumber, Converter } from '@glif/filecoin-number';
 
 export function formatAsFilecoin(number) {
   return `${number} FIL`;
 }
 
 export function attoFILtoFIL(number = 0) {
-  const filecoinNumber = new FilecoinNumber(`${number}`, "attofil");
+  const filecoinNumber = new FilecoinNumber(`${number}`, 'attofil');
   const inFil = filecoinNumber.toFil();
   return inFil;
 }
@@ -19,23 +19,17 @@ export function getAttoFILtoUSD(number = 0, price) {
 export function percentageCheaper(attoFIL, priceAmazon, currentUSD) {
   const filecoin = getAttoFILtoUSD(attoFIL, currentUSD);
   if (filecoin <= 0) {
-    return "0.00% the cost of Amazon";
+    return '0.00% the cost of Amazon';
   }
 
-  return `${((filecoin / priceAmazon) * 100).toFixed(
-    2
-  )}% the cost of Amazon S3`;
+  return `${((filecoin / priceAmazon) * 100).toFixed(4)}% the cost of Amazon S3`;
 }
 
-export function compareFilecoinToAmazon(
-  priceFilecoin,
-  priceAmazon,
-  currentUSD
-) {
+export function compareFilecoinToAmazon(priceFilecoin, priceAmazon, currentUSD) {
   const filecoin = getAttoFILtoUSD(priceFilecoin, currentUSD);
 
   if (filecoin <= 0) {
-    return "Infinity times cheaper";
+    return 'Infinity times cheaper';
   }
 
   let percentage = 0;
@@ -43,12 +37,12 @@ export function compareFilecoinToAmazon(
     const calculation = ((priceAmazon - filecoin) / filecoin) * 100;
     return `${calculation}% cheaper`;
   } else {
-    return "It is not cheaper.";
+    return 'It is not cheaper.';
   }
 }
 
 export function inFIL(number = 0, price) {
-  const filecoinNumber = new FilecoinNumber(`${number}`, "attofil");
+  const filecoinNumber = new FilecoinNumber(`${number}`, 'attofil');
   const inFil = filecoinNumber.toFil();
 
   let candidate = `${formatAsFilecoin(inFil)}`;
@@ -68,7 +62,7 @@ export function inFIL(number = 0, price) {
 }
 
 export function inUSD(number, price) {
-  const filecoinNumber = new FilecoinNumber(`${number}`, "attofil");
+  const filecoinNumber = new FilecoinNumber(`${number}`, 'attofil');
   const inFil = filecoinNumber.toFil();
 
   let candidate = `${formatAsFilecoin(inFil)}`;
@@ -92,7 +86,7 @@ export const isEmpty = (string) => {
     return true;
   }
 
-  if (typeof string === "object") {
+  if (typeof string === 'object') {
     return true;
   }
 
@@ -116,21 +110,11 @@ export const toDateSinceEpoch = (epoch) => {
 };
 
 export const bytesToSize = (bytes, decimals = 2) => {
-  if (bytes === 0) return "0 Bytes";
+  if (bytes === 0) return '0 Bytes';
 
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = [
-    "Bytes",
-    "KiB",
-    "MiB",
-    "GiB",
-    "TiB",
-    "PiB",
-    "EiB",
-    "ZiB",
-    "YiB",
-  ];
+  const sizes = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
